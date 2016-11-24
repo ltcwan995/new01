@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>雷蛇-始于玩家</title>
+        <link rel="stylesheet" href="css/store.css" />
+        <script type="text/javascript" src="js/jquery-1.12.4.js" ></script>
+        <script type="text/javascript" src="js/store.js" ></script>
+        <link rel="shortcut icon" type="image/x-icon" href="favicon.ico"/>
+        <link rel="stylesheet" href="css/font-awesome.min.css" />
+    </head>
+    <body>
+          <div class="head">
+              <div class="banxin">
+                      <ul class="login">
+                          <li class="dy"><a href="#">登录</a></li>
+                          <li><a href="#">注册</a></li>
+                      </ul>
+              </div>
+          </div>
+          <div class="banxin">
+          <div class="top">
+               <span class="logo"></span>
+                <span class="fd"></span>
+              <div class="search">
+              <input type="text" >
+              </div>
+              <div class="goto"><a href="#">购物车 》</a></div>
+          </div>
+          </div>
+          <div class="banxin">
+              <div class="dhl">
+              <li id="all-product"><a href="index.html">全部商品分类</a></li>
+                  <ul class="dh-left">
+                      <li><h4>鼠标</h4><a href="#">人体工程学</a><a href="#">双手通用</a>
+                      <ul class="dh-right"><li><a href="#"><img src="images/85_thumb_G_1474601942491.jpg">人体工程学</a></li><li><a href="#"><img src="images/95_thumb_G_1416884503292%20%281%29.jpg">双手通用</a></li><li><a href="#"><img src="images/77_thumb_G_1410425757717.jpg">便携式</a></li></ul></li>
+                      <li><h4>键盘</h4><a href="#">机械键盘</a><a href="#">薄膜键盘</a>
+                      <ul class="dh-right"><li><a href="#"><img src="images/98_thumb_G_1477043461024.jpg">机械键盘</a></li><li><a href="#"><img src="images/96_thumb_G_1416886292199.jpg">薄膜键盘</a></li></ul></li>
+                       <li><h4>游戏鼠标垫</h4><a href="#">软垫</a><a href="#">硬垫</a><a href="#">双面垫</a>
+                      <ul class="dh-right"><li><a href="#"><img src="images/143_thumb_G_1420613737102.jpg">软垫</a></li><li><a href="#"><img src="images/135_G_1420602509319.jpg">硬垫</a></li><li><a href="#"><img src="images/151_thumb_G_1420618494022.jpg">双面垫</a></li><li><a href="#"><img src="images/152_thumb_G_1421724130098.jpg">便携式</a></li></ul></li>
+                      <li><h4>音频</h4><a href="#">耳塞</a><a href="#">扬声器</a><a href="#">耳麦</a>
+                      <ul class="dh-right"><li><a href="#"><img src="images/118_thumb_G_1420525409079.jpg">耳麦</a></li><li><a href="#"><img src="images/116_thumb_G_1420515930246.jpg">耳塞</a></li><li><a href="#"><img src="images/193_thumb_G_1421314773991.jpg">扬声器</a></li><li><a href="#"><img src="images/128_thumb_G_1420527595932.jpg">耳机</a></li></ul></li>
+                     <li><h4>周边配件</h4><a href="#">集线器</a><a href="#">产品配件</a><a href="#">原装</a>
+                      <ul class="dh-right"><li><a href="#"><img src="images/208_thumb_G_1476673091661.jpg">集线器</a></li><li><a href="#"><img src="images/210_thumb_G_1421819941615.jpg">产品配件</a></li><li><a href="#"><img src="images/202_thumb_G_1421746020704.jpg">装备保护</a></li><li><a href="#"><img src="images/204_thumb_G_1421747846868.jpg">生活方式</a></li></ul></li>
+                  </ul>
+              </div>
+              <!--轮播图-->
+              <div class="banxin">
+              	<div class="slider" id="slider">
+                   <div class="slider-img">
+        <ul class="sd">
+            <li><img src="images/1476244685590285596.jpg" ></li>
+            <li><img src="images/1473670176684827166.jpg" ></li>
+            <li><img src="images/1475981620168961855.jpg" ></li>
+        </ul>
+    </div>
+    <div class="arrow">
+        <span class="prev"><</span>
+        <span class="next">></span>
+    </div>
+    <div class="ctrl-square">
+          <span class="current"></span>
+          <span></span>
+          <span></span>
+    </div>
+        </div>
+         <script>
+   var slider=$(".slider");
+   var lis=$(".sd li");
+    var index;
+    var num=0;
+    var arrow=$(".arrow");
+    $(".sd li").eq(0).css("opacity",1).siblings().css("opacity",0)
+    $(".ctrl-square span").on("click", function () {
+        index = $(this).index()
+        $(".sd li").eq(index).animate({"opacity":1}).siblings().animate({"opacity":0})
+        $(".ctrl-square span").eq(index).addClass("current").siblings().removeClass("current")
+        num=index;
+    })
+    $(".prev").on("click", function () {
+    	--num<0?num=lis.length-1:num;
+    	$(".sd li").eq(num).animate({"opacity":1}).siblings().animate({"opacity":0})
+        $(".ctrl-square span").eq(num).addClass("current").siblings().removeClass("current")
+    	console.log(num);
+    	light();
+    })
+    $(".next").on("click", function () {
+    	++num>lis.length-1?num=0:num;
+    	$(".sd li").eq(num).animate({"opacity":1}).siblings().animate({"opacity":0})
+        $(".ctrl-square span").eq(num).addClass("current").siblings().removeClass("current")
+        console.log(num)
+    })
+    timer=setInterval(autoplay,2500);
+   function autoplay(){
+   	   ++num>lis.length-1?num=0:num;
+    	$(".sd li").eq(num).animate({"opacity":1}).siblings().animate({"opacity":0})
+        $(".ctrl-square span").eq(num).addClass("current").siblings().removeClass("current")
+        console.log(num)
+        light();
+   } 
+   slider.on("mouseenter",function(){
+   	  arrow.css("display","block")
+   	  clearInterval(timer)
+   })
+    slider.on("mouseleave",function(){
+   	  arrow.css("display","none")
+   	   timer=setInterval(autoplay,2500);
+   })
+    function light(){
+        spanS=$(".square span");
+        spanS.eq(num).addClass("current").siblings().removeClass("current");
+            }
+   </script>
+           </div>
+       <div class="banxin">
+       	<ul class="product">
+       		<li><a href="javascript:;"><img src="images/1474625590184955425.jpg" width="310px" height="205px"/></a></li>
+       		<li><a href="javascript:;"><img src="images/1474625684898059300.jpg" width="310px" height="205px"/></a></li>
+       		<li><a href="javascript:;"><img src="images/1474626103597252573.jpg" width="310px" height="205px"/></a></li>
+       	</ul>
+       </div>
+       <div class="banxin">
+       	<div class="cpxl">
+       		<!--鼠标-->
+       		<div class="sb">
+       			<h1>鼠标</h1>
+       			<ul>
+       				<li><a href="#">人体工程学</a></li>
+       				<li><a href="#">双手通用</a></li>
+       				<li><a href="#">MMO</a></li>
+       				<li><a href="#">便携式</a></li>
+       			</ul>
+       			<div class="hmb"><a href="shangcheng.html"><img src="images/1474185865706453239.jpg"/><span>曼巴眼镜蛇竞技版 <b>￥799</b></span> </a></div>
+       		</div>
+       	</div>
+       	<div class="count">
+       		<ul class="count01">
+       			<li><a href="#"><img src="images/280_G_1472551862003.jpg" width="140px" height="140px"/><span>那伽梵蛇六芒星V2 MMO<b>￥599.00</b></span><span id="rx"></span></a></li>
+       			<li><a href="#"><img src="images/197_G_1477038740326.jpg" width="140px" height="140px"/><span>炼狱蝰蛇 1800dpi黑<b>￥199.00</b></span><span id="xp"></span></a></li>
+       			<li><a href="#"><img src="images/72_G_1474602347285.jpg" width="140px" height="140px"/><span>地狱狂蛇2014<b>￥199.00</b></span></a></li>
+       			<li><a href="#"><img src="images/192_G_1477038366294.jpg" width="140px" height="140px"/><span>炼狱蝰蛇 幻彩版<b>￥449.00</b></span></a></li>
+       			<li><a href="#"><img src="images/133_G_1477037159521.jpg" width="140px" height="140px"/><span>太攀皇蛇 白色<b>￥599.00</b></span></a></li>
+       			<li><a href="#"><img src="images/283_G_1472631486477.jpg" width="140px" height="140px"/><span>响尾蛇幻彩灯光 电竞<b>￥799.00</b></span></a></li>
+       		</ul>
+       	</div>
+       </div>
+       	<!--键盘-->
+       	<div class="banxin-one">
+       	<div class="cpxl">
+       		<div class="sb">
+       			<h1>键盘</h1>
+       			<ul>
+       				<li><a href="#">机械键盘</a></li>
+       				<li><a href="#">薄膜键盘</a></li>
+       				<li><a href="#">单手键盘</a></li>
+       				<li><a href="#">键鼠套装</a></li>
+       			</ul>
+       			<div class="hmb"><a href="shangcheng01.html"><img src="images/1474535547691747947.jpg"/><span>黑寡妇蜘蛛X幻彩版 <b>￥1299</b></span> </a></div>
+       		</div>
+       	</div>
+       	<div class="count">
+       		<ul class="count01">
+       			<li><a href="#"><img src="images/305_G_1473328891742 (1).jpg" width="140px" height="140px"/><span>idea pro专用<b>￥1399.00</b></span><span id="rx"></span></a></li>
+       			<li><a href="#"><img src="images/98_G_1477043461543 (1).jpg" width="140px" height="140px"/><span>黑寡妇蜘蛛竞技版<b>￥599.00</b></span><span id="xp"></span></a></li>
+       			<li><a href="#"><img src="images/75_G_1450666797011.jpg" width="140px" height="140px"/><span>地狱狂蛇1800dpi+二角尘蛛<b>￥299.00</b></span></a></li>
+       			<li><a href="#"><img src="images/102_G_1477041128154.jpg" width="140px" height="140px"/><span>黑寡妇蜘蛛终极版2014<b>￥999.00</b></span></a></li>
+       			<li><a href="#"><img src="images/246_G_1472722872607.jpg" width="140px" height="140px"/><span>萨诺狼蛛<b>￥299.00</b></span></a></li>
+       			<li><a href="#"><img src="images/257_G_1449219052584.jpg" width="140px" height="140px"/><span>金丝魔蛛幻彩版<b>￥999.00</b></span></a></li>
+       		</ul>
+       	</div>
+       </div>
+       </div>
+       <!--音频-->
+       <div class="banxin-two">
+       	<div class="cpxl">
+       		<div class="sb">
+       			<h1>音频</h1>
+       			<ul>
+       				<li><a href="#">耳麦</a></li>
+       				<li><a href="#">耳塞</a></li>
+       				<li><a href="#">扬声器</a></li>
+       			</ul>
+       			<div class="hmb"><a href="javascript:;"><img src="images/1474536517456256634.jpg"/><span>战神无线游戏耳麦<b>￥1499</b></span> </a></div>
+       		</div>
+       	</div>
+       	<div class="count">
+       		<ul class="count01">
+       			<li><a href="#"><img src="images/306_G_1473416305193.jpg" width="140px" height="140px"/><span>战锤狂鲨专业版V2 <b>￥599.00</b></span><span id="rx"></span></a></li>
+       			<li><a href="#"><img src="images/131_G_1449735694606.jpg" width="140px" height="140px"/><span> 北海巨妖7.1幻彩版<b>￥799.00</b></span><span id="xp"></span></a></li>
+       			<li><a href="#"><img src="images/125_G_1420527115722.jpg" width="140px" height="140px"/><span>北海巨妖专业版2015 黑色<b>￥699.00</b></span></a></li>
+       			<li><a href="#"><img src="images/193_thumb_G_1421314773991.jpg" width="140px" height="140px"/><span>Leviathan 利维坦巨兽<b>￥1999.00</b></span></a></li>
+       			<li><a href="#"><img src="images/194_G_1421316160239.jpg" width="140px" height="140px"/><span>Seiren 魔音海妖<b>￥1399.00</b></span></a></li>
+       			<li><a href="#"><img src="images/293_G_1473046096935.jpg" width="140px" height="140px"/><span>利维坦巨兽迷你音响<b>￥1499.00</b></span></a></li>
+       		</ul>
+       	</div>
+       </div>
+       </div>
+       <div class="footer">
+       	<div class="banxin">
+       	<ul class="fh">
+       		<li>顺丰极速配送</li>
+       		<li>48小时闪电发货</li>
+       		<li>7天无理由退货</li>
+       		<li>30余家售后网点</li>
+       	</ul>
+       	<div class="xz">
+       		<div><ul><h4>关注我们</h4><li><a href="#">品牌介绍</a></li><li><a href="#">社交媒体</a></li></ul></div>
+       		<div><ul><h4>帮助中心</h4><li><a href="#">购物指南</a></li><li><a href="#">支付方式</a></li><li><a href="#">配送方式</a></li></ul></div>
+       		<div><ul><h4>服务支持</h4><li><a href="#">售后政策</a></li><li><a href="#">售后支持</a></li><li><a href="#">驱动下载</a></li></ul></div>
+       		<div><ul><h4>常见问题</h4><li><a href="#">隐私政策</a></li><li><a href="#">发票索取</a></li><li><a href="#">退换货</a></li></ul></div>
+       	</div>
+       	<div class="wj"><img src="images/footer_slogan.png"/></div>
+       	<div class="copyright"><p>
+			Copyright© 1999-2012 Razer (Asia-Pacific) Pte Ltd 版权所有 | 沪ICP备12035791号
+		</p></div>
+       </div>
+       </div>
+      <ul class="kf">
+      	<li class="one"><a href="#"><img src="images/fu1.png"/><img class="mecar" src="images/fu11.png"/></a></li>
+      	<li class="two"><a href="#"><img src="images/fu2.png"/><img class="mecar01" src="images/fu22.png"/></a></li>
+      	<li class="three"><a href="#"><img src="images/fu4.png"/><img class="mecar02" src="images/fu44.png"/></a></li>
+      	<li id="four"><a href="#"><img src="images/feiji.png"/><img class="mecar03" src="images/feiji2.png"/></a></li>
+      </ul>
+      <script type="text/javascript" src="js/JQuery1.0.0.0.js" ></script>
+      <script>
+        window.onload = function () {
+            var backTop = document.getElementById("four");
+
+            //1：显示小火箭。
+            window.onscroll = function () {
+                if(scroll().top>100){
+                    backTop.style.display = "block";
+                }else{
+                    backTop.style.display = "none";
+                }
+                //页面滑动，会触动这个事件，然后检测被卷去的头部，作为屏幕跳转的Y坐标
+                leader = scroll().top;
+            }
+            //2：老三步（回到页面顶部）
+            //3：定时器。
+            //4：确定目标的值，和自身的值。
+            //5：利用缓动框框架原理，慢慢移动到指定位置。
+
+            //定义相关元素（定时器，目标位置，屏幕自身位置Y）
+            // (被卷去的头部，就是屏幕的Y坐标)（变相计数器）
+            var timer = null, target = 0, leader = 0;
+            backTop.onclick = function () {
+                //要用定时器，先清定时器
+                clearInterval(timer);
+                timer = setInterval(function () {
+                    //步长
+                    var step = (target - leader)/10;
+                    step = step>0?Math.ceil(step):Math.floor(step);
+                    //屏幕应该跳转到的Y坐标
+                    leader = leader+step;
+                    //屏幕跳转
+                    window.scrollTo(0,leader);
+                    if(target == leader){
+                        clearInterval(timer);
+                    }
+                },200)
+
+            }
+        }
+    </script>
+    </body>
+</html>
